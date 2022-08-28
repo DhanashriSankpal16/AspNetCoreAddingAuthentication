@@ -35,6 +35,7 @@ namespace WishList.Controllers
         {
             if (ModelState.IsValid)
                 return View(model);
+            _userManager.CreateAsync(new ApplicationUser() { Email = model.Email, UserName = model.Email }, model.Password);
             return RedirectToAction("Index", "Home");
         }
     }
